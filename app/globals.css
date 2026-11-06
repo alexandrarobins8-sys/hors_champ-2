@@ -63,7 +63,8 @@ h1 span { display: block; }
 .hero-art { position: relative; min-width: 0; color: var(--background); overflow: hidden; background: var(--hc-surface-dark); }
 .hero-art img { object-fit: cover; object-position: 55% 50%; }
 .image-top { position: absolute; top: 22px; left: 22px; right: 22px; display: flex; align-items: center; justify-content: space-between; font-size: 9px; }
-.image-coordinate { position: absolute; left: 22px; top: 45%; font-size: 8px; }
+.image-top>span { background: var(--hc-carbon); padding: 6px 8px; }
+.image-coordinate { position: absolute; left: 22px; top: 45%; font-size: 8px; background: var(--hc-carbon); padding: 6px 8px; }
 .image-bottom { position: absolute; left: 22px; bottom: 22px; right: 22px; display: flex; align-items: center; gap: 8px; font-size: 9px; background: var(--hc-carbon); padding: 7px 9px; width: fit-content; }
 .image-bottom>span:last-child { margin-left: 20px; }
 .hero-baseline { border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; font-size: 9px; color: var(--muted-foreground); }
