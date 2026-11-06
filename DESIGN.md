@@ -1,141 +1,183 @@
-# HORS CHAMP — DESIGN SYSTEM
+# HORS CHAMP — DESIGN SYSTEM & PROMPT DE CORRECTION v0
 
-**Direction :** 05 — SAFETY SIGNAL  
-**Collection :** DROP 01 — OUTSIDE SYSTEM  
-**Version :** 1.0 · 06 novembre 2026  
-**Destination :** v0 → Next.js / Tailwind CSS → Vercel  
-**Langue de l'interface :** français (`fr-FR`)
+**Version :** 2.0 — corrigée, 06/11/2026  
+**Direction :** 05 / SAFETY SIGNAL  
+**Projet :** HORS CHAMP — Drop 01 / Outside System  
+**Destination :** v0 → Next.js / TypeScript / Tailwind CSS → Vercel  
+**Langue :** français  
+**Fichiers à générer dans le projet :** composants React + `content/content.yaml` + images réellement affichées  
 
-> **INSTRUCTION PRIORITAIRE POUR v0**  
-> Ce fichier est la source de vérité **visuelle et d'interaction** du projet HORS CHAMP. Applique ses tokens, ses compositions et ses composants à toutes les sections. Le fichier `content/content.yaml` est, séparément, la source de vérité **éditoriale** : aucun texte marketing ne doit être dupliqué en dur dans les composants. Lorsque le contenu, l'accessibilité ou la faisabilité technique exige un arbitrage, privilégie d'abord l'exactitude du brief et l'accessibilité, puis la cohérence visuelle. **Construis le site directement** : pas de simple concept, mockup, plan ou documentation en guise de livrable.
-
----
-
-## 01. ADN DE MARQUE ET INTENTION
-
-HORS CHAMP est une **marque fictive** de streetwear parisien préparant un premier drop de démonstration, « Drop 01 — Outside System ».
-
-- **Promesse exacte :** « Des vêtements essentiels, construits pour vivre dehors. »
-- **Positionnement :** minimalisme parisien, silhouettes amples et premium, imperfections assumées, détails techniques, nostalgie sportswear, vêtements conçus pour être portés, usés et recontextualisés.
-- **Synthèse :** *Parisian restraint × elevated essentials × worn-in imperfection × technical protection × old-school futurism*.
-- **Angle recommandé par l'exercice :** *Quiet utility × worn precision*.
-- **Interprétation Safety Signal :** conserver un site calme, architectural et désirable ; réserver le vert de signalisation aux éléments réellement actionnables et à quelques accents graphiques. Le signal doit guider le regard, **pas recouvrir toute la page**.
-- **Personnalité :** retenue, directe, précise, urbaine, utilitaire, non ostentatoire.
-- **Ton rédactionnel :** concis, tangible, sans emphase publicitaire, sans promesses de rareté ni urgence artificielle.
-
-### Mots-clés visuels
-
-`UTILITY` · `MOVEMENT` · `PRECISION` · `WORN` · `PROTECTION` · `OUTSIDE` · `SIGNAL`
-
-### À exclure
-
-Site SaaS, dashboard, boutique e-commerce générique, luxe classique, gradients décoratifs, glassmorphism, cartes arrondies systématiques, gros effets 3D, faux avis, faux compteurs, promotions fictives, codes visuels copiés d'A.P.C., Fear of God, Golden Goose, New Balance ou Yeezy. Les références du brief servent **à identifier des tensions créatives, pas à reproduire une marque**.
+> **MISSION IMMÉDIATE POUR v0 : CORRIGER ET LIVRER LE SITE, PAS UNE MAQUETTE.**
+>
+> Si un projet HORS CHAMP existe déjà dans cette conversation v0, **modifie-le en place** : conserve sa structure fonctionnelle, corrige les erreurs visuelles et ajoute toutes les photographies de vêtements manquantes. Ne te contente pas de commenter le design ou de générer ce document. Si le projet est vierge, construis directement la landing page entière.
+>
+> **PRIORITÉ ABSOLUE : DES VÊTEMENTS VISIBLES SUR LE SITE.** Le précédent `DESIGN.md` demandait des blocs et des placeholders abstraits. Cette règle est ANNULÉE. Le hero, le lookbook et les quatre produits doivent utiliser de **véritables visuels représentant clairement des vêtements**, chargés et visibles dans la preview v0 ET après déploiement. Les photographies de référence ne sont **pas** des visuels officiels de HORS CHAMP : leur statut illustratif doit être mentionné discrètement et honnêtement.
 
 ---
 
-## 02. PALETTE ET TOKENS COULEUR
+## 0. AUDIT DES ERREURS ET DES EXIGENCES DU PDF
 
-### 2.1 Couleurs primitives — couleurs du brief PDF
+Le PDF d'exercice impose une **landing page de mode désirable**, et non une page de texte ou une interface remplie de rectangles. Il demande explicitement d'analyser la place de l'image, de rendre les silhouettes désirables, de montrer des matières et d'employer des silhouettes en mouvement, des cadrages partiels, des détails matières et des environnements urbains (pages 1, 3 et 4). Il autorise les visuels de démonstration lorsqu'aucune photo officielle n'est fournie, mais interdit de les présenter comme de vrais visuels de la marque (pages 5 à 7).
 
-| Token | Hex | Rôle |
+| Point du PDF | Problème de la précédente version | Correction impérative dans ce fichier |
 |---|---|---|
-| `chalk` | `#E8E7E2` | Fond principal clair, esprit papier/minéral |
-| `carbon` | `#151515` | Texte principal, fond sombre, structure |
-| `concrete` | `#898985` | Bordures ou éléments graphiques secondaires ; **pas** de petit texte sur chalk |
-| `steel` | `#8B8B87` | Surfaces de média, repères et détails non textuels |
-| `signal` | `#D6FF3F` | CTA principal, focus et repères ponctuels |
-| `rust` | `#8D4936` | Accent éditorial rare, rappel d'imperfection et de patine |
+| La marque vend un point de vue, une **silhouette** et une appartenance (p. 3) | Site surtout graphique, pas de vêtements visibles | Hero avec mannequin en vêtement + lookbook photographique |
+| Montrer les produits du Drop 01 (p. 2) | Cartes sans photographies produit | **4 images réelles et identifiables** : hoodie, veste, t-shirt, casquette |
+| Image : mouvement, cadrages partiels, matières, béton / bitume / architecture (p. 4) | Placeholders abstraits substitués aux photos | Photos éditoriales + macro textile + silhouette urbaine |
+| Pas de vraies photos HORS CHAMP fournies (p. 5–7) | Ancienne règle interdisant pratiquement toute photographie | Utiliser des **photos libres de réutilisation à titre d'inspiration**, sans usurper la marque ; mention claire « visuels d'inspiration » |
+| Architecture de landing page précise (p. 4 et 7) | Risque de sections manquantes ou trop abstraites | Conserver les **9 zones** dans l'ordre du brief |
+| Prix / stock / date non confirmés (p. 2–7) | Risque de fiction commerciale | Aucun prix, stock, fausse rareté, compte à rebours, panier ou paiement |
+| Contenu indépendant en YAML (p. 5–6) | Risque de texte dupliqué dans les composants | `content/content.yaml` source de vérité **éditoriale et média** |
+| Formulaire visuel sans backend (p. 6–7) | Risque d'annoncer un enregistrement inexistant | Validation locale + message honnête de démonstration |
+| Itérations et déploiement (p. 7–8) | PDF utilise Google AI Studio et Netlify | Adaptation demandée : **v0 + GitHub facultatif + Vercel** |
 
-**Tokens de support proposés** (non issus du PDF) : `white = #FFFFFF`, `muted-ink = #555550`, `hairline = #C7C6BF`, `surface-dark = #202020`. Ils complètent la palette pour la lisibilité et les états d'interface.
+**Cette version remplace toutes les instructions contradictoires de l'ancien fichier.** En particulier, ne réutilise pas de composant `ImagePlaceholder` pour le hero, le lookbook ou les quatre cartes produits.
 
-### 2.2 Proportion d'utilisation cible
+---
 
-- **60 %** chalk / fonds neutres.
-- **30 %** carbon / photographies sombres / typographie / surfaces contrastées.
-- **7 %** concrete, steel et gris de support.
-- **3 % maximum** signal et rust cumulés sur les écrans éditoriaux courants.
+## 1. OBJECTIF PRODUIT
 
-Ces ratios sont une **intention de direction artistique**, pas un audit automatique au pixel. Un grand CTA ou une bande signal ponctuelle peut dépasser localement ce ratio.
+Créer une landing page **premium, éditoriale, mobile-first** pour la marque fictive de streetwear parisien **HORS CHAMP**, à l'occasion de sa collection de démonstration **Drop 01 — Outside System**.
 
-### 2.3 Tokens CSS prêts pour v0
+**Promesse exacte :** « Des vêtements essentiels, construits pour vivre dehors. »
 
-Implémenter dans `app/globals.css` en conservant les tokens existants si un projet en possède déjà. Mapper les noms sémantiques aux variables Tailwind/shadcn **sans créer deux systèmes parallèles**.
+**CTA principal exact :** `Accéder au drop` → `#access` (accès anticipé ; **pas** une boutique active).  
+**CTA secondaire exact :** `Découvrir la collection` → `#collection`.
+
+**Territoire de marque :** minimalisme parisien, silhouettes premium amples, imperfections assumées, détail technique, nostalgie sportswear, vêtements portés/usés/recontextualisés.
+
+**Tensions créatives issues de l'exercice :**
+- *Parisian restraint* — retenue parisienne.
+- *Elevated essentials* — essentiels haut de gamme.
+- *Worn-in imperfection* — patine et imperfection.
+- *Technical protection* — protection fonctionnelle.
+- *Old-school futurism* — nostalgie sportswear et volume.
+
+**Direction d'ensemble recommandée par le PDF :** *Quiet utility × worn precision.*  
+**Application spécifique Safety Signal :** base minimaliste et graphique, avec touches de vert fluo pour hiérarchiser l'action, **jamais** pour masquer la mode ou concurrencer les photos.
+
+Références évoquées par le PDF : A.P.C., Fear of God, Golden Goose, New Balance Protection Pack et Yeezy old school **uniquement pour comprendre des tensions**. Ne reproduire ni leur logo, ni leurs pages, ni leurs produits.
+
+---
+
+## 2. EXIGENCE PHOTO NON NÉGOCIABLE — LE CORRECTIF ESSENTIEL
+
+### 2.1 Nombre et présence des photos
+
+Le résultat final doit comporter **au minimum huit emplacements photographiques réellement remplis** :
+
+1. **Hero : 1** grande photo éditoriale d'une silhouette habillée ; le vêtement doit être clairement visible.
+2. **Lookbook : 3** images de nature différente : silhouette en mouvement/urbaine, détail textile ou vêtement, vue éditoriale d'ensemble.
+3. **Produits : 4** photos montrant réellement chacune sa catégorie : hoodie, veste légère, t-shirt, casquette.
+4. **Détails de construction :** une macro photo de tissu ou de zip est vivement recommandée, en plus des huit images précédentes.
+
+**Aucune de ces zones ne doit être un rectangle uni, une trame CSS, un SVG d'attente, une icône de vêtement ou `/placeholder.svg`.** Des surfaces `chalk/carbon/steel` peuvent structurer la mise en page, mais ne remplacent jamais les photographies attendues.
+
+### 2.2 Banque de photos de référence sélectionnées pour amorcer le MVP
+
+Les URL ci-dessous correspondent à des photos Unsplash décrites comme **« free to use under the Unsplash License »** sur leurs pages sources. Ce sont des **images d'inspiration illustratives**, pas des photographies de créations HORS CHAMP. Vérifier visuellement le cadrage et les éventuels logos visibles avant de les conserver. **Ne jamais les créditer comme une campagne HORS CHAMP.**
+
+**Important pour v0 :** essaie d'abord d'**enregistrer chaque photo réellement utilisée dans `public/images/`** avec les noms ci-dessous, puis référence le fichier local. Si ton environnement ne peut pas télécharger le média, utilise la **URL CDN complète** dans `src` (avec `next/image` + `remotePatterns` pour `images.unsplash.com`), en vérifiant que la preview charge vraiment le visuel. Les pages sources sont incluses pour retrouver ou remplacer la photo, pas pour servir comme `src` d'une image.
+
+| Emplacement / fichier local visé | Sujet devant être visible | URL CDN (source utilisable dans `src`) | Page de la photo / auteur |
+|---|---|---|---|
+| `hero-streetwear.jpg` | Silhouette streetwear dans un environnement de béton / urbain | `https://images.unsplash.com/photo-1590330297626-d7aff25a0431?auto=format&fit=crop&w=1800&q=85` | https://unsplash.com/photos/2UTk-Nip5aM — Mike Von |
+| `product-field-hoodie.jpg` | **Véritable hoodie noir porté** | `https://images.unsplash.com/photo-1647797819874-f51a8a8fc5c0?auto=format&fit=crop&w=1100&q=85` | https://unsplash.com/photos/r-fZqxXDG-8 — MEHRAX |
+| `product-layer-shell.jpg` | **Veste / outerwear à zip portée** | `https://images.unsplash.com/photo-1578964046312-69d266a3e739?auto=format&fit=crop&w=1100&q=85` | https://unsplash.com/photos/kBoAgvwb2X8 — Nafis Al Sadnan |
+| `product-archive-tee.jpg` | **T-shirt oversize porté**, corps et volume reconnaissables | `https://images.unsplash.com/photo-1780566759977-ff8b5d53731c?auto=format&fit=crop&w=1100&q=85` | https://unsplash.com/photos/Su_IaoGIjBg — Anton K Wibowo |
+| `product-signal-cap.jpg` | **Casquette de baseball noire** reconnaissable | `https://images.unsplash.com/photo-1557225451-b03ada84e645?auto=format&fit=crop&w=1100&q=85` | https://unsplash.com/photos/IVb43vObfMA — Julian Faist |
+| `lookbook-movement.jpg` | Silhouette urbaine / T-shirt en extérieur, photographie de mode | `https://images.unsplash.com/photo-1779040620498-d0698c9afd97?auto=format&fit=crop&w=1200&q=85` | https://unsplash.com/photos/tO-NFxrfmo8 — sammy swae |
+| `lookbook-detail.jpg` | **Matière textile en gros plan**, texture palpable | `https://images.unsplash.com/photo-1742113041820-ba5b9da08f9a?auto=format&fit=crop&w=1000&q=85` | https://unsplash.com/photos/mXU4q6Oei6E — Olga Kovalski |
+| `lookbook-cap.jpg` | Casquette portée / détail de silhouette, complément photographique | `https://images.unsplash.com/photo-1776501496576-f89b3e14e7ac?auto=format&fit=crop&w=1200&q=85` | https://unsplash.com/photos/Li_j8esIwLo — Tina Devidze |
+
+**Sélection éditoriale :** si une photo ne ressemble pas à la pièce attendue, contient un gros logo étranger, ne fonctionne pas, ou cadre le vêtement hors de l'image, **remplace-la par une photo pertinente, autorisée et chargée**. Le critère est la visibilité d'un vêtement, pas la fidélité absolue à ces URL. Les photos n'établissent **aucun** attribut réel des quatre produits fictifs (couleur, composition, coupe exacte, etc.).
+
+### 2.3 Comportement obligatoire en cas de chargement défaillant
+
+1. Tester **chaque** `src` dans la preview : image chargée, pas d'icône cassée.
+2. Si le téléchargement en `public/images/` réussit, privilégier le chemin local `/images/…` ; ce chemin doit exister dans le projet.
+3. Sinon utiliser la photo distante et autoriser explicitement `images.unsplash.com` dans `next.config.ts` via `images.remotePatterns`.
+4. Si un CDN retourne une erreur, choisir une autre photographie de vêtement (Unsplash / Pexels, licence adaptée) et mettre à jour la source dans le YAML.
+5. Si l'outil de génération d'images de v0 est disponible, il peut créer des visuels **explicitement fictifs / de démonstration** et enregistrer de vraies images ; ne jamais les présenter comme photos réelles de HORS CHAMP.
+6. **Ne pas déclarer le travail terminé tant que le hero + les 4 produits + les 3 médias lookbook ne sont pas visibles.** Un fond coloré, un composant vide et un simple texte `PHOTO HERE` ne constituent pas une image.
+
+### 2.4 Traitement et légende honnête
+
+- Sous la grille produit, intégrer une petite ligne lisible : **« Visuels d'inspiration — les produits HORS CHAMP présentés sont fictifs. »**
+- Dans le lookbook, employer **« Moodboard de démonstration »** ou **« Photographies d'inspiration »** comme petite mention de section.
+- Ne pas apposer de faux logo HORS CHAMP sur une pièce appartenant à une autre marque ; ne pas retoucher des photos pour suggérer une campagne officielle.
+- Ne pas mettre un watermark géant « DEMO » sur chaque photo : cela ruine le rendu éditorial. Une discrète légende de contexte suffit ; le statut des fiches produits reste « Produit de démonstration ».
+- Utiliser des `alt` décrivant honnêtement **ce que l'image montre**, pas un nom commercial inventé : exemple « Personne portant un hoodie sombre, photographie d'inspiration ».
+- Si les photos sont réutilisées publiquement, conserver dans le projet leurs URL de source / auteurs et vérifier les conditions applicables. Crédit visible discret recommandé dans un fichier `CREDITS.md` ou le footer.
+
+---
+
+## 3. DESIGN TOKENS — COULEURS
+
+**Palette exacte du PDF**, à préserver :
+
+| Nom | Hex | Utilisation Safety Signal |
+|---|---|---|
+| Chalk | `#E8E7E2` | Fond clair, surfaces papier/minéral |
+| Carbon | `#151515` | Typographie, grandes surfaces sombres |
+| Concrete | `#898985` | Détails secondaires non essentiels, surfaces de média |
+| Steel | `#8B8B87` | Structures techniques, séparateurs |
+| Signal | `#D6FF3F` | CTA primaire, repères sélectionnés, focus local |
+| Rust | `#8D4936` | Accent de patine **rare** |
+
+**Couleurs de support ajoutées pour l'interface, non prescrites par le PDF :** `white #FFFFFF`, `ink-muted #555550`, `hairline #C7C6BF`, `carbon-soft #202020`.
+
+**Règle d'équilibre :** les photos de vêtements, la typographie et la mise en page produisent le désir. Le vert fluo est une **signalisation**. Viser ~60 % fonds clairs, ~30 % noir/photos sombres, <10 % gris et accents visuels. Ne pas employer le vert sur des fonds couvrant de grandes surfaces de la page.
 
 ```css
 :root {
-  /* Primitive colors — brief */
   --hc-chalk: #E8E7E2;
   --hc-carbon: #151515;
   --hc-concrete: #898985;
   --hc-steel: #8B8B87;
   --hc-signal: #D6FF3F;
   --hc-rust: #8D4936;
-
-  /* Support colors — design-system proposal */
   --hc-white: #FFFFFF;
-  --hc-muted-ink: #555550;
+  --hc-ink-muted: #555550;
   --hc-hairline: #C7C6BF;
-  --hc-surface-dark: #202020;
+  --hc-carbon-soft: #202020;
 
-  /* Semantic colors */
   --hc-bg: var(--hc-chalk);
-  --hc-surface: var(--hc-chalk);
   --hc-fg: var(--hc-carbon);
-  --hc-fg-muted: var(--hc-muted-ink);
-  --hc-border: var(--hc-hairline);
+  --hc-bg-dark: var(--hc-carbon);
+  --hc-fg-on-dark: var(--hc-chalk);
   --hc-accent: var(--hc-signal);
   --hc-accent-fg: var(--hc-carbon);
-  --hc-editorial-accent: var(--hc-rust);
-  --hc-focus: var(--hc-carbon);
+  --hc-border: var(--hc-hairline);
 
-  /* Typography */
   --hc-font-sans: "Space Grotesk", Arial, sans-serif;
   --hc-font-mono: "IBM Plex Mono", ui-monospace, monospace;
-  --hc-text-xs: 0.6875rem;  /* 11px */
-  --hc-text-sm: 0.8125rem;  /* 13px */
-  --hc-text-base: 1rem;     /* 16px */
-  --hc-text-lg: 1.125rem;   /* 18px */
-  --hc-text-xl: 1.375rem;   /* 22px */
-  --hc-title-section: clamp(2.625rem, 6vw, 5.5rem);
-  --hc-title-hero: clamp(3.25rem, 11vw, 10.5rem);
 
-  /* Spacing — base 4px */
-  --hc-space-1: 0.25rem;
-  --hc-space-2: 0.5rem;
-  --hc-space-3: 0.75rem;
-  --hc-space-4: 1rem;
-  --hc-space-5: 1.25rem;
-  --hc-space-6: 1.5rem;
-  --hc-space-8: 2rem;
-  --hc-space-10: 2.5rem;
-  --hc-space-12: 3rem;
-  --hc-space-16: 4rem;
-  --hc-space-20: 5rem;
-  --hc-space-24: 6rem;
-  --hc-space-32: 8rem;
+  --hc-space-1: 4px;
+  --hc-space-2: 8px;
+  --hc-space-3: 12px;
+  --hc-space-4: 16px;
+  --hc-space-6: 24px;
+  --hc-space-8: 32px;
+  --hc-space-10: 40px;
+  --hc-space-12: 48px;
+  --hc-space-16: 64px;
+  --hc-space-20: 80px;
+  --hc-space-24: 96px;
+  --hc-space-32: 128px;
 
-  /* Shape */
-  --hc-radius-none: 0;
-  --hc-radius-sm: 2px;
-  --hc-radius-md: 4px;
-  --hc-border-width: 1px;
-
-  /* Layout */
-  --hc-container-max: 1440px;
+  --hc-radius: 2px;
   --hc-gutter: 16px;
-  --hc-section-gap: 64px;
-
-  /* Interaction */
-  --hc-duration-fast: 150ms;
-  --hc-duration-base: 220ms;
-  --hc-ease-out: cubic-bezier(.22, 1, .36, 1);
+  --hc-container: 1440px;
+  --hc-section-space: 64px;
+  --hc-speed: 200ms;
+  --hc-ease: cubic-bezier(.22,1,.36,1);
 }
-
 @media (min-width: 640px) {
-  :root { --hc-gutter: 32px; --hc-section-gap: 96px; }
+  :root { --hc-gutter: 32px; --hc-section-space: 96px; }
 }
 @media (min-width: 1024px) {
-  :root { --hc-gutter: 48px; --hc-section-gap: 128px; }
+  :root { --hc-gutter: 48px; --hc-section-space: 128px; }
 }
 @media (min-width: 1440px) {
   :root { --hc-gutter: 64px; }
@@ -149,313 +191,171 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 ::selection { background: var(--hc-signal); color: var(--hc-carbon); }
-:focus-visible { outline: 2px solid var(--hc-focus); outline-offset: 4px; }
+:focus-visible { outline: 2px solid var(--hc-carbon); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }
 ```
 
-### 2.4 Contrastes et usage sémantique
-
-- Texte principal : `carbon` sur `chalk` (excellent contraste).
-- Texte secondaire lisible : `muted-ink` sur `chalk` (environ **6:1**).
-- Bouton `signal` : fond `#D6FF3F`, texte `carbon` (environ **15,9:1**).
-- `concrete` et `steel` sur `chalk` : contraste **insuffisant pour du petit texte** ; les réserver aux séparateurs, pictogrammes non essentiels et surfaces décoratives.
-- `rust` sur `chalk` peut porter une courte étiquette, avec vérification de contraste.
-- Toujours vérifier les compositions sur photo ou fond sombre ; ajouter un aplat/gradient **fonctionnel de lisibilité** si nécessaire, pas décoratif.
-- États d'erreur : privilégier un message textuel explicite, pas la couleur seule. Aucun rouge d'erreur arbitraire obligatoire dans la direction visuelle ; étendre les tokens uniquement si la fonctionnalité l'exige.
+**Contrastes :** carbon sur chalk / signal ; clair sur carbon ; `concrete` et `steel` **pas** pour du petit texte sur chalk. Le texte secondaire doit utiliser `ink-muted` sur fond clair. Boutons de 44 px de hauteur minimum.
 
 ---
 
-## 03. TYPOGRAPHIE
+## 4. TYPOGRAPHIE & VOIX DE MARQUE
 
-### 3.1 Familles
+**Paire de typographies proposée pour Safety Signal :**
+- **Space Grotesk** — titrage, corps, noms des produits (poids 400/500/600/700).
+- **IBM Plex Mono** — labels techniques, petits repères, numérotation, micro-informations et certains boutons (poids 400/500/600).
 
-- **Space Grotesk** — titres, paragraphes, chiffres. Font principale ouverte et expressive, forte sans être luxueuse.
-- **IBM Plex Mono** — labels techniques, index de sections, repères, métadonnées, CTA compacts.
-- Charger les deux familles avec `next/font/google` (sous-ensembles nécessaires uniquement), exposées sous forme de variables CSS. **Ne pas multiplier les familles de polices.**
+Importer avec `next/font/google`. Pas de troisième police arbitraire.
 
-### 3.2 Échelle et styles
+| Style | Taille | Poids / interligne | Autres règles |
+|---|---|---|---|
+| Hero H1 | `clamp(3.25rem, 10.5vw, 10rem)` | 700 / 0.88 | uppercase, tracking négatif mesuré ; **jamais coupé sur mobile** |
+| H2 sections | `clamp(2.5rem, 6vw, 5.5rem)` | 700 / 0.98 | proportions éditoriales |
+| Manifeste | `clamp(1.5rem, 3.8vw, 3.5rem)` | 500 / 1.14 | longueur de ligne maîtrisée |
+| Noms produits | `clamp(1.5rem, 2.8vw, 2.4rem)` | 600 / 1.1 | protagonistes avec image |
+| Corps | `16–18px` | 400 / 1.55 | lisibilité, pas de colonnes trop larges |
+| Labels | `11–12px` | 500 / 1.3 | IBM Plex Mono, uppercase, tracking +0.06em |
+| CTA | `12–14px` | 600 / 1.1 | uppercase léger, largeur confortable |
 
-| Usage | Taille | Poids | Interlignage | Tracking / casse |
-|---|---|---|---|---|
-| Hero H1 | `clamp(52px, 11vw, 168px)` | 700 | `0.86` | `-0.075em`, uppercase |
-| H2 section | `clamp(42px, 6vw, 88px)` | 700 | `0.96` | `-0.055em` |
-| H3 / nom produit | `clamp(24px, 3vw, 42px)` | 600 | `1.05` | `-0.035em` |
-| Manifeste / statement | `clamp(24px, 3.8vw, 56px)` | 500 | `1.1` | `-0.04em` |
-| Texte principal | `16–18px` | 400 | `1.45–1.6` | normal |
-| Texte secondaire | `14–16px` | 400 | `1.5` | normal |
-| Label technique | `11–12px` | 500 | `1.25` | `+0.06em`, uppercase |
-| Bouton | `12–13px` | 600 | `1` | `+0.04em`, uppercase |
-
-**Règle critique :** le titre « OUTSIDE SYSTEM » doit être composé sur une ou deux lignes selon l'écran, **jamais tronqué**. Employer `overflow-wrap`, ajustement de taille et éventuellement deux `span` contrôlés ; ne pas utiliser un `white-space: nowrap` provoquant du scroll horizontal.
-
-### 3.3 Voix et microcopy
-
-- Phrases courtes, concrètes et non théâtrales.
-- Légendes visuelles possibles : `01 / FORM`, `02 / MOVEMENT`, `03 / DETAIL`, `CONSTRUCTION NOTES`.
-- Ne jamais écrire `SOLD OUT`, `LIMITED STOCK`, `ONLY 2 LEFT`, `FINAL HOURS`, etc., puisqu'aucune disponibilité n'est confirmée.
-- Les produits sont explicitement étiquetés **« Produit de démonstration »**.
+**Ton :** concret, court, net, sans clichés luxueux, sans exclusivité artificielle. Le texte met la photographie en valeur ; éviter de couvrir les vêtements avec des pavés rédactionnels.
 
 ---
 
-## 04. GRILLE, ESPACEMENTS ET COMPOSITION
+## 5. GRILLES & MEDIA — RÈGLES DE COMPOSITION
 
-### 4.1 Conteneur et colonnes
+- **Conteneur :** `max-width: 1440px`, marges variables via `--hc-gutter`.
+- **Mobile `<640px` :** 1 colonne de contenu, gouttières 16px ; pas d'images écrasées ni coupées au mauvais endroit.
+- **Tablette `640–1023px` :** 2 colonnes produits, lookbook simplifié, 32px de gouttière.
+- **Desktop `≥1024px` :** grille 12 colonnes ; hero split ou image éditoriale dominante ; lookbook asymétrique, produits en 2×2 (grandes images) ou 4 colonnes si leur lisibilité reste excellente.
+- **Grand écran `≥1440px` :** conteneur plafonné, gouttières 64px, sections verticales généreuses.
+- **Sections :** séparation verticale 64 / 96 / 128px selon largeur.
+- **Formes :** rayons 0–4px max, pas de cartes en pilules ou d'ombres systématiques.
+- **Bordures :** 1px, minimalistes. Parfois des filets horizontaux, mais pas autour de chaque élément.
 
-- Conteneur centré, `max-width: 1440px`, gouttières fluides avec `--hc-gutter`.
-- **Mobile (<640px) :** grille 4 colonnes conceptuelles, réalisation CSS 1 colonne pour les contenus structurants. Gouttières 16px.
-- **Tablette (640–1023px) :** grille 6 colonnes, gouttières 32px ; produits en 2 colonnes si l'espace le permet.
-- **Desktop (≥1024px) :** grille 12 colonnes, gouttières 48px ; produits en 2 ou 4 colonnes éditoriales selon l'importance des images.
-- **Grand écran (≥1440px) :** marges de 64px, largeur plafonnée à 1440px ; ne pas étirer le contenu indéfiniment.
+### Ratios photographiques
 
-### 4.2 Rythme
+| Média | Desktop | Mobile | Recadrage |
+|---|---|---|---|
+| Hero | 16:10 ou 4:5 selon composition | 4:5 ou 3:4 | Priorité à la silhouette et au vêtement, `object-position` ajusté |
+| Lookbook silhouette | 3:4 | 4:5 | Personne et vêtement dans le cadre |
+| Lookbook texture | 1:1 | 1:1 | Macro / fibres reconnaissables |
+| Lookbook contexte | 4:3 ou 3:4 | 4:5 | Environnement urbain mais tenue visible |
+| Produits | **4:5 partout** | **4:5 partout** | Chaque type de vêtement doit être immédiatement reconnaissable |
 
-- Espacement vertical entre grandes sections : `64px / 96px / 128px` pour mobile / tablette / desktop.
-- Espacement entre titre et contenu : `24–40px`.
-- Espacement entre éléments liés : `8–16px`.
-- Ligne fine de séparation (`1px`) fréquente, mais ne pas transformer chaque section en carte.
-- Ajouter du contraste par **échelle et vide**, pas par multiplication des effets.
-
-### 4.3 Formes et profondeur
-
-- Rayons **0–4px maximum** ; boutons en rectangles francs, pas de pill buttons.
-- Bordures fines, visibles et intentionnelles.
-- Pas de `box-shadow` décorative ; employer fonds et typographie.
-- Un seul accent `signal` majeur par zone de lecture lorsque possible.
-- Place des images dans des cadres aux ratios constants ; ne pas les déformer.
+**Ne pas couper une capuche, un bas de t-shirt ou la visière d'une casquette au point qu'on ne reconnaisse plus l'article.** Utiliser `object-fit: cover` avec `object-position` dédié selon photo, éventuellement `contain` pour un packshot réel de produit. Les photos sont les éléments centraux du site.
 
 ---
 
-## 05. PHOTOGRAPHIE, VISUELS ET LOOKBOOK
-
-### Direction photo issue du brief
-
-- Silhouettes en mouvement, souvent partielles.
-- Cadrages non centrés et angles documentaires.
-- Détails de matière, piqûres et construction, sans prétendre montrer une caractéristique non confirmée.
-- Lumière froide ou flash direct, imperfections visibles.
-- Environnements : béton, métal, bitume, vestiaires, architecture urbaine.
-- Éviter les shootings trop propres, trop luxueux ou studio de catalogue.
-
-### Règles de vérité des images
-
-Aucune image officielle n'est livrée avec le brief. **Ne pas présenter une image IA, stock ou empruntée comme une photographie authentique de HORS CHAMP.** Pour le MVP, créer des *placeholders de direction artistique* esthétiques, clairement signalés : trames, blocs monochromes, cadrages abstraits, repères `VISUEL DE DÉMONSTRATION`, `LOOKBOOK / PLACEHOLDER`, etc. Utiliser des images réelles seulement si elles sont fournies ultérieurement et autorisées.
-
-### Ratios recommandés
-
-| Emplacement | Ratio | Traitement |
-|---|---|---|
-| Hero | Desktop `16:10` ou composition asymétrique | Image/placeholder dominant, texte lisible |
-| Hero mobile | `4:5` | Re-cadrage assumé, CTA conservés |
-| Lookbook portrait | `3:4` | Silhouette / mouvement |
-| Lookbook détail | `1:1` | Matière / zoom |
-| Lookbook paysage | `4:3` | Architecture / environnement |
-| Produit | `4:5` | Placeholders cohérents, jamais « packshots officiels » fictifs |
-
----
-
-## 06. BIBLIOTHÈQUE DE COMPOSANTS
-
-Les composants ci-dessous constituent les **contrats visuels et d'interaction** à implémenter dans React/Tailwind. Utiliser des éléments HTML natifs et accessibles avant d'ajouter une bibliothèque. shadcn/ui peut être employé si cela simplifie vraiment le travail.
+## 6. COMPOSANTS OBLIGATOIRES
 
 ### 6.1 `AnnouncementBar`
 
-- Hauteur min. 32–40px ; fond `carbon`, texte `chalk`.
-- Texte conseillé : `DROP 01 — OUTSIDE SYSTEM / COLLECTION DE DÉMONSTRATION`.
-- Petit marqueur `signal` optionnel ; **aucun faux compte à rebours**.
-- Lisible sur mobile ; texte centré ou défilant **seulement si contrôlable**. Préférer du texte statique.
+- Fond carbon, texte chalk, hauteur 36–40px.
+- Texte : `DROP 01 — OUTSIDE SYSTEM / COLLECTION DE DÉMONSTRATION`.
+- Petit repère signal seulement si utile. Aucun faux compte à rebours.
 
-### 6.2 `SiteHeader` et `MobileNav`
+### 6.2 `SiteHeader` / `MobileNav`
 
-- Logo texte `HORS CHAMP`, graisse 700, uppercase.
-- Navigation : `Collection`, `Manifeste`, `Accès anticipé`.
-- CTA secondaire possible : `Accéder au drop` → `#access`.
-- Fond chalk ou carbon selon l'architecture, séparateur 1px.
-- Hauteur 64px mobile, 76–88px desktop.
-- Desktop : nav horizontale ; mobile : bouton menu accessible (`aria-expanded`, `aria-controls`), panneau réel, fermeture au clic.
-- Header sticky possible **uniquement** s'il ne cache pas les titres d'ancre (`scroll-margin-top`).
+- Logo texte **HORS CHAMP**, bien lisible.
+- Liens : `Collection` → `#collection`, `Manifeste` → `#manifesto`, `Accès anticipé` → `#access`.
+- Header 64–80px, mobile menu accessible au clavier ; pas de lien fictif actif.
+- Sticky facultatif, avec `scroll-mt` pour les ancres.
 
-### 6.3 `PrimaryButton`
+### 6.3 `HeroSection` — priorité photographique n° 1
 
-- Fond `signal`, texte `carbon`, bordure `carbon` si nécessaire.
-- Taille min. **44px de hauteur**, padding horizontal 20–28px.
-- Police mono ou sans, uppercase, graisse 600.
-- Hover : assombrissement subtil de bordure, petite translation d'icône ou changement de contraste sans effet excessif.
-- Active : transformation discrète (`translateY(1px)`), disabled : opacité et curseur adaptés.
-- Focus : contour visible d'au moins 2px, séparé du fond du bouton.
-- Variantes : `primary`, `outline`, `text-link` ; une seule API de composant.
+Composition préférée sur desktop : **très grande photographie éditoriale** occupant au minimum 45–60 % de la largeur du hero, texte net sur fond carbon ou chalk, asymétrie. Le mannequin **porte visiblement un vêtement**. Sur mobile, conserver une vraie photo de tenue sans recadrage destructeur.
 
-### 6.4 `SecondaryButton`
+Contenu exact :
+- Label : `DROP 01`.
+- H1 : `OUTSIDE SYSTEM`.
+- Baseline : `Des vêtements essentiels, construits pour vivre dehors.`
+- Bouton Signal : `Accéder au drop` → `#access`.
+- Bouton contour : `Découvrir la collection` → `#collection`.
 
-- Fond transparent, texte carbon, bordure carbon 1px.
-- Même taille et alignement que le CTA principal.
-- Hover : fond carbon / texte chalk, sans transition trop lente.
-- Sur fond sombre : bordure/textes chalk.
+**Ne pas faire un hero purement typographique sans vêtement.** Ne pas placer un aplat vert sur la totalité de la photo. Éviter de couvrir le corps ou les matières par des éléments UI.
 
-### 6.5 `SectionEyebrow`
+### 6.4 `ManifestoSection`
 
-- Préfixe numéroté : `01 / MANIFESTE`, `02 / LOOKBOOK`…
-- Font IBM Plex Mono, 11–12px, uppercase, tracking 0.06em.
-- Petite ligne ou carré `signal` facultatif.
-- Ne pas utiliser le signal sur toutes les lignes, conserver la retenue.
+- Titre exact : `Pas une saison. Un système.`
+- Texte exact : `Des pièces simples, pensées pour les déplacements, les couches et les usages quotidiens.`
+- Disposition éditoriale asymétrique, espaces libres, éventuellement une photographie de matière adjacente si cela apporte du sens.
 
-### 6.6 `HeroSection`
+### 6.5 `LookbookGrid` — priorité photographique n° 2
 
-- Index visible : `DROP 01`.
-- Titre : **OUTSIDE SYSTEM** (composition contrôlée, immense mais jamais coupée).
-- Sous-titre exact : **Des vêtements essentiels, construits pour vivre dehors.**
-- Boutons : `Accéder au drop` → `#access` et `Découvrir la collection` → `#collection`.
-- Visuel éditorial grand format ou placeholder honnête.
-- Version desktop : composition asymétrique texte/image, suffisamment d'air.
-- Version mobile : ordre cohérent `eyebrow → H1 → promesse → CTA → visuel` (ou variante avec visuel en arrière-plan **seulement si la lisibilité est garantie**).
-- **Interdictions :** date de lancement fictive, faux stock, jauge de disponibilité, urgence artificielle.
+**Trois véritables photos obligatoires.** Une grande image de silhouette / mouvement, une macro matière, une image de vêtement urbain ou détail de casquette. Grille asymétrique desktop, pile mobile. Légendes `01 / FORM`, `02 / TEXTURE`, `03 / MOVEMENT`. Petite mention **« Moodboard de démonstration »**. Ne pas utiliser de carrousel au MVP.
 
-### 6.7 `ManifestoSection`
+### 6.6 `ProductEditorialCard` + `ProductsSection` — priorité n° 3
 
-- Titre exact : **Pas une saison. Un système.**
-- Texte exact : **Des pièces simples, pensées pour les déplacements, les couches et les usages quotidiens.**
-- Texte affiché en grande taille, largeur de lecture maîtrisée.
-- Fond chalk, détails carbon et éventuellement une petite marque signal.
-- Structure asymétrique possible : index à gauche, manifeste à droite.
+**Quatre cartes, chacune avec une photographie pleine largeur et visuellement pertinente**, ratio **4:5**, occupante principale de la carte. L'ordre est figé :
 
-### 6.8 `LookbookGrid`
+1. **Field Hoodie** — « Hoodie oversize en coton lourd, lavé et structuré. » ; photo d'une personne portant un hoodie.
+2. **Layer Shell** — « Une couche légère pensée pour protéger sans alourdir. » ; photo d'une veste légère / zip-up outerwear.
+3. **Archive Tee** — « Un t-shirt ample, marqué par un imprimé discret. » ; photo d'un t-shirt ample (la photo illustrative peut être uni : ne pas prétendre que l'imprimé du produit est réel).
+4. **Signal Cap** — « Une casquette souple avec un détail réfléchissant. » ; photo d'une casquette reconnaissable (ne pas prétendre qu'un détail réfléchissant montré par la photo est authentique).
 
-- 3 cadrages distincts : silhouette/mouvement, matière/détail, architecture/usage.
-- Desktop : grille éditoriale asymétrique (ex. 6/3/3 ou 7/5 sur deux lignes).
-- Mobile : pile verticale avec ratios conservés, marges confortables.
-- Légendes monospace : `FORM`, `DETAIL`, `MOVEMENT`.
-- Si placeholders : afficher explicitement `VISUEL DE DÉMONSTRATION`.
-- Pas de slider/carousel nécessaire au MVP : une grille statique est plus rapide et plus robuste.
+Chaque carte comprend : index `01 / 04`, photo, nom, description, label **`Produit de démonstration`**. Aucun prix, sélecteur de taille fictif, stock, avis, panier, badge sold-out ou bouton acheter. Les interactions hover ne doivent pas masquer les photos.
 
-### 6.9 `ProductEditorialCard`
+Ajouter sous la section : **« Visuels d'inspiration — les produits HORS CHAMP présentés sont fictifs. »**
 
-- Carte **éditoriale**, pas « carte boutique » : grand visuel/placeholder, nom, courte description, status.
-- Pas d'ombre, pas de gros coins arrondis, pas de boutons « Ajouter au panier ».
-- Option : fine ligne inférieure et index (`01 / 04`).
-- Les quatre produits, dans cet ordre :
+### 6.7 `ConstructionDetailsSection`
 
-| Nom | Description validée | Statut obligatoire |
-|---|---|---|
-| Field Hoodie | Hoodie oversize en coton lourd, lavé et structuré. | Produit de démonstration |
-| Layer Shell | Une couche légère pensée pour protéger sans alourdir. | Produit de démonstration |
-| Archive Tee | Un t-shirt ample, marqué par un imprimé discret. | Produit de démonstration |
-| Signal Cap | Une casquette souple avec un détail réfléchissant. | Produit de démonstration |
+Section de détails qualitatifs, avec 3–5 items (grille / filets fins) : `VOLUME`, `SUPERPOSITION`, `PROTECTION`, `IMPERFECTION`, `USAGE`. Montrer si possible **une photo macro de tissu/zip**. Ne pas inventer de poids de coton, certification, imperméabilité ou taille. Tout détail technique visuel est une référence de direction artistique, non une spécification avérée.
 
-**Ne pas inventer :** prix, stock, tailles, couleurs commerciales, certificats, avis clients, précommandes ou disponibilité.
-
-### 6.10 `ConstructionDetailSection`
-
-- Section documentaire exprimant volumes, superpositions, protection, imperfections et usages quotidiens.
-- Layout : rangées numérotées, schémas abstraits non trompeurs, séparateurs fins, légendes techniques.
-- Exemple de labels autorisés : `VOLUME`, `LAYERING`, `MOVEMENT`, `EVERYDAY USE`.
-- Ne pas transformer des intentions créatives en allégations techniques précises (grammages exacts, étanchéité, certifications, etc.).
-
-### 6.11 `EarlyAccessForm`
+### 6.8 `EarlyAccessForm`
 
 - Titre : **Le drop arrive bientôt.**
-- Corps : **Inscris-toi pour recevoir l'accès anticipé et les informations de lancement.**
-- Champ `<input type="email" required autocomplete="email">`, label visible **Ton adresse email**.
-- CTA **Rejoindre la liste**.
-- **Mode démonstration** : aucune API, aucun backend, aucune sauvegarde, aucun service d'emailing.
-- Valider côté navigateur et n'afficher **que ce message transparent** après soumission valide : `Mode démonstration — aucune adresse email n'a été enregistrée.`
-- Le message du brief `Merci. Tu recevras les prochaines informations du drop.` est réservé à une future version **réellement connectée** ; ne pas l'afficher dans cette version.
-- Ne pas envoyer l'adresse en analytics, query string, console ou stockage local.
-- Message d'état annoncé via `role="status"` / `aria-live="polite"`.
-- Champ hauteur ≥48px, focus visible, contraste renforcé.
+- Texte : **Inscris-toi pour recevoir l'accès anticipé et les informations de lancement.**
+- Champ : **Ton adresse email** ; `type="email"`, `required`, `autocomplete="email"`, label associé.
+- Bouton : **Rejoindre la liste**.
+- **AUCUN backend, base, emailing, stockage, compte utilisateur ou soumission à un serveur.**
+- Après validation locale : **`Mode démonstration — aucune adresse email n'a été enregistrée.`** via `role="status"` / `aria-live="polite"`.
+- Ne pas afficher `Merci. Tu recevras les prochaines informations du drop.` en l'absence de collecte réelle, même si ce message existe dans le contenu YAML issu du brief.
 
-### 6.12 `SiteFooter`
+### 6.9 `SiteFooter`
 
-- Logo + signature + liens : `Collection`, `Manifeste`, `Contact`, `Instagram`, `Mentions légales`, `Politique de confidentialité`.
-- Les ancres internes doivent être réelles ; les destinations contact/social/juridiques **ne sont pas fournies** : afficher `À compléter` ou une indication honnête, **pas de faux liens actifs**.
-- Ne pas publier de mentions légales inventées pour une marque fictive.
-- Footer carbon/chalk au choix, contraste systématiquement vérifié.
+- Logo + signature de marque.
+- Navigation `Collection`, `Manifeste`, `Contact`, `Instagram`, `Mentions légales`, `Politique de confidentialité`.
+- Les liens inconnus ne doivent pas être de faux liens actifs : indiquer discrètement `À compléter` pour contacts et destinations non renseignées.
+- Mention de transparence sur les visuels d'inspiration accessible depuis footer, si nécessaire.
 
-### 6.13 Composants transverses
+### 6.10 Composants transversaux
 
-- `EditorialDivider` : 1px, hairline ou carbon selon contraste.
-- `ImagePlaceholder` : ratio explicite, caption « Visuel de démonstration », accessible.
-- `StatusLabel` : taille 11–12px, uppercase et sans code couleur trompeur.
-- `Container` : max-width et gutters du système.
-- `Section` : spacing vertical standardisé.
-- `InlineArrow` : petite flèche directionnelle en CSS ou Lucide, `aria-hidden` si décorative.
+- `EditorialImage` : véritable `<Image>` Next.js ou `<img>` avec `src` valide, `alt`, ratio, `object-position`, état de chargement, dimensions; **ne pas remplacer par un bloc vide**.
+- `PrimaryButton` : fond Signal / texte Carbon, hauteur min 44px.
+- `SecondaryButton` : contour Carbon / transparent, même hauteur.
+- `SectionEyebrow` : IBM Plex Mono uppercase, numérotation discrète.
+- `Container` / `Section` / `EditorialDivider` / `StatusLabel`.
+- `ImageCredit` facultatif, très discret.
 
 ---
 
-## 07. ÉTATS ET MICRO-INTERACTIONS
+## 7. STRUCTURE DE PAGE — ORDRE STRICT DU PDF
 
-| Élément | Repos | Hover / focus | Active / réponse |
-|---|---|---|---|
-| CTA principal | signal + carbon | contraste conservé, déplacement icône max 4px | feedback discret |
-| CTA outline | bordure carbon | inversion carbon/chalk | feedback discret |
-| Liens de nav | carbon, label compact | soulignement 1px | ancre valide |
-| Carte produit | statique, image dominante | léger changement visuel non essentiel | pas de fausse action d'achat |
-| Champ email | bordure carbon/hairline | focus 2px visible | validation native + retour démo |
-| Menu mobile | fermé | focus clavier lisible | s'ouvre, se ferme, annonce son état |
+Ne pas réorganiser :
 
-- Durées `150–220ms`, easing `cubic-bezier(.22, 1, .36, 1)`.
-- Pas de reveal-on-scroll obligatoire ; éviter animations bloquantes ou effets de parallax.
-- Respecter `prefers-reduced-motion` et l'usage clavier.
-- N'utiliser une interaction que si elle accomplit une tâche ; **ne jamais simuler un service absent**.
+1. Announcement bar
+2. Header
+3. Hero du Drop 01 **avec photo de tenue**
+4. Manifeste court
+5. Silhouettes / Lookbook **avec 3 vraies images**
+6. Produits **avec 4 vraies images de vêtements**
+7. Détails de construction / caractéristiques qualitatives
+8. Accès anticipé
+9. Footer
 
----
-
-## 08. RESPONSIVE — RÈGLES PRÉCISES
-
-| Largeur | Mise en page | Typographie | Navigation / CTA |
-|---|---|---|---|
-| 320–639px | 1 colonne de contenu, gutter 16px | H1 min 52px si compatible avec texte, H2 ~42px | Menu mobile, CTA empilés ou pleine largeur |
-| 640–767px | 2 colonnes possibles, gutter 32px | Titres fluides | Nav simplifiée si besoin |
-| 768–1023px | Lookbook asymétrique simplifié, produits 2 colonnes | Titres progressifs | Contrôler la place du header |
-| 1024–1439px | 12 colonnes, split hero, grands médias | Forte hiérarchie | Nav desktop complète |
-| ≥1440px | Conteneur 1440px max, marges 64px | Taille H1 plafonnée | Ne pas étirer les lignes |
-
-### Tests de non-régression obligatoires
-
-- **375px** : aucune ligne de « OUTSIDE SYSTEM » coupée, aucun scroll horizontal ; accès anticipé utilisable avec clavier mobile.
-- **768px** : images non écrasées, compositions lisibles, produits à 2 colonnes si possible.
-- **1440px** : maîtrise du vide, longueur de ligne confortable, hero impactant.
-- Tester également 320px et 1024px pour les points de rupture.
-- Images dimensionnées avec `object-fit: cover` seulement sur visuels photographiques appropriés ; ne pas couper du texte contenu dans une image.
-- Aucun élément essentiel placé derrière le sticky header.
-- Taille de cible interactive conseillée : au moins 44×44px.
+Ancres : `#manifesto`, `#lookbook`, `#collection`, `#details`, `#access`.  
+`#collection` doit viser le titre de la grille des quatre produits.  
+Un seul `<h1>` dans le hero ; sections suivantes en `<h2>`.  
+**Une seule landing page**, pas de routes produit ni tunnel e-commerce.
 
 ---
 
-## 09. STRUCTURE DE PAGE IMPOSÉE
+## 8. CONTENU EXACT À CRÉER DANS `content/content.yaml`
 
-Respecter **l'ordre exact** des neuf zones retenues dans le document de l'exercice :
-
-1. **Announcement bar**
-2. **Header**
-3. **Hero du Drop 01**
-4. **Manifeste court**
-5. **Silhouettes / lookbook**
-6. **Produits**
-7. **Système de tailles ou détails techniques** — ici, privilégier des **détails de construction qualitatifs**, sans inventer de taille ni caractéristique réelle
-8. **Accès anticipé**
-9. **Footer**
-
-### Ancres et informations architecture
-
-- `#collection` : produits ou entrée de collection.
-- `#manifesto` : manifeste.
-- `#lookbook` : silhouettes.
-- `#details` : détails de construction.
-- `#access` : formulaire de démonstration.
-- Le titre du hero est un `h1` unique ; les sections structurantes reçoivent un `h2`.
-- La page doit rester **une seule landing page**, sans multi-page e-commerce inutile.
-
----
-
-## 10. CONTRAT ÉDITORIAL ET CONTENU YAML
-
-**L'exercice sépare le contenu du design.** Le fichier éditorial `content/content.yaml` doit contenir a minima les clés ci-dessous, reprises du brief et du prompt de l'exercice. Le design system **n'est pas** un substitut à ce fichier : lire le YAML et distribuer ses valeurs dans les composants. Ne pas coder ces valeurs en double.
+Le YAML est la source de vérité pour **les textes ET les visuels**. Les noms des produits, descriptions, CTA et manifeste proviennent du PDF. La clé `media` ci-dessous est **l'adaptation corrective ajoutée**, afin d'empêcher que v0 oublie les images.
 
 ```yaml
 brand:
@@ -483,19 +383,60 @@ manifesto:
   title: "Pas une saison. Un système."
   text: "Des pièces simples, pensées pour les déplacements, les couches et les usages quotidiens."
 
+# Les champs media sont obligatoires.
+# v0 doit remplacer les URLs CDN par /images/nom.jpg SI les fichiers ont effectivement été téléchargés.
+media:
+  hero:
+    src: "https://images.unsplash.com/photo-1590330297626-d7aff25a0431?auto=format&fit=crop&w=1800&q=85"
+    alt: "Silhouette streetwear en veste sombre dans un décor urbain, photographie d'inspiration"
+    credit: "Mike Von / Unsplash"
+    source: "https://unsplash.com/photos/2UTk-Nip5aM"
+  lookbook:
+    - id: "movement"
+      src: "https://images.unsplash.com/photo-1779040620498-d0698c9afd97?auto=format&fit=crop&w=1200&q=85"
+      alt: "Silhouette portant un t-shirt sur une route urbaine, photographie d'inspiration"
+      caption: "01 / MOVEMENT"
+      source: "https://unsplash.com/photos/tO-NFxrfmo8"
+    - id: "texture"
+      src: "https://images.unsplash.com/photo-1742113041820-ba5b9da08f9a?auto=format&fit=crop&w=1000&q=85"
+      alt: "Gros plan d'une matière textile tissée, photographie d'inspiration"
+      caption: "02 / TEXTURE"
+      source: "https://unsplash.com/photos/mXU4q6Oei6E"
+    - id: "cap"
+      src: "https://images.unsplash.com/photo-1776501496576-f89b3e14e7ac?auto=format&fit=crop&w=1200&q=85"
+      alt: "Casquette portée en gros plan, photographie d'inspiration"
+      caption: "03 / FORM"
+      source: "https://unsplash.com/photos/Li_j8esIwLo"
+
 products:
   - name: "Field Hoodie"
     description: "Hoodie oversize en coton lourd, lavé et structuré."
     status: "Produit de démonstration"
+    image:
+      src: "https://images.unsplash.com/photo-1647797819874-f51a8a8fc5c0?auto=format&fit=crop&w=1100&q=85"
+      alt: "Personne portant un hoodie noir, visuel d'inspiration non officiel"
+      source: "https://unsplash.com/photos/r-fZqxXDG-8"
   - name: "Layer Shell"
     description: "Une couche légère pensée pour protéger sans alourdir."
     status: "Produit de démonstration"
+    image:
+      src: "https://images.unsplash.com/photo-1578964046312-69d266a3e739?auto=format&fit=crop&w=1100&q=85"
+      alt: "Personne portant une veste sombre zippée, visuel d'inspiration non officiel"
+      source: "https://unsplash.com/photos/kBoAgvwb2X8"
   - name: "Archive Tee"
     description: "Un t-shirt ample, marqué par un imprimé discret."
     status: "Produit de démonstration"
+    image:
+      src: "https://images.unsplash.com/photo-1780566759977-ff8b5d53731c?auto=format&fit=crop&w=1100&q=85"
+      alt: "Personne portant un t-shirt oversize, visuel d'inspiration non officiel"
+      source: "https://unsplash.com/photos/Su_IaoGIjBg"
   - name: "Signal Cap"
     description: "Une casquette souple avec un détail réfléchissant."
     status: "Produit de démonstration"
+    image:
+      src: "https://images.unsplash.com/photo-1557225451-b03ada84e645?auto=format&fit=crop&w=1100&q=85"
+      alt: "Casquette noire, visuel d'inspiration non officiel"
+      source: "https://unsplash.com/photos/IVb43vObfMA"
 
 access:
   title: "Le drop arrive bientôt."
@@ -503,31 +444,46 @@ access:
   input_label: "Ton adresse email"
   button_label: "Rejoindre la liste"
   confirmation_message: "Merci. Tu recevras les prochaines informations du drop."
-  backend_required: false
   demo_notice: "Mode démonstration — aucune adresse email n'a été enregistrée."
+  backend_required: false
 
 footer:
   links: ["Collection", "Manifeste", "Contact", "Instagram"]
   legal: ["Mentions légales", "Politique de confidentialité"]
+  image_disclaimer: "Visuels d'inspiration — les produits HORS CHAMP présentés sont fictifs."
 ```
 
-**Application stricte :** parce que `backend_required: false`, ne pas afficher `confirmation_message` après soumission. Il n'est là que pour une éventuelle future version dotée d'un vrai service d'inscription. `launch_date: "Date à confirmer"` n'autorise pas l'affichage d'une date fictive. Les valeurs manquantes (prix, stock, tailles, contacts, réseaux) **doivent rester manquantes**.
+**Règle de code :** les composants doivent accéder aux photos depuis `media.hero`, `media.lookbook` et `products[i].image`. **Ne jamais réintroduire des URLs `/placeholder.svg` ou dupliquer des sources photo dans les composants.**
 
 ---
 
-## 11. STACK ET MODALITÉS D'IMPLÉMENTATION POUR v0
+## 9. STACK, ARCHITECTURE ET MEDIA LOADING
 
-### Stack cible
+- Next.js App Router + React + TypeScript + Tailwind.
+- `next/font/google` pour Space Grotesk et IBM Plex Mono.
+- `yaml` (ou paquet léger équivalent) pour lire `content/content.yaml` **côté serveur**.
+- Server Components par défaut ; Client Components seulement menu et formulaire.
+- `next/image` pour photos, avec `sizes`, priorité du hero et lazy-load des images sous le pli.
+- Si photos distantes, ajouter :
 
-- **Next.js**, App Router, TypeScript.
-- **Tailwind CSS** pour la mise en forme.
-- **React Server Components** par défaut ; `"use client"` uniquement pour menu mobile et formulaire démo si nécessaire.
-- **next/font/google** pour Space Grotesk et IBM Plex Mono.
-- **Lucide** seulement si une icône aide réellement à comprendre une action.
-- **Aucun backend, base de données, compte utilisateur, paiement, service email ou variable d'environnement**.
-- **Vercel** comme cible de déploiement ; GitHub facultatif pour versionner les itérations.
+```ts
+// next.config.ts — exemple à adapter à la configuration déjà existante
+import type { NextConfig } from "next";
+const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "images.unsplash.com" },
+    ],
+  },
+};
+export default nextConfig;
+```
 
-### Arborescence conseillée
+**Ne pas utiliser à la fois un fichier local inexistant et sa version distante.** Le chemin `public/images/x.jpg` se référence par `/images/x.jpg` seulement après confirmation que le fichier existe. Une URL de page Unsplash (`unsplash.com/photos/...`) n'est **pas** une URL image et ne doit jamais être utilisée comme `src`.
+
+**Composant photo recommandé :** container avec `position: relative` + `aspect-ratio` + `<Image fill sizes="..." style={{objectFit:'cover'}}>` + `alt` approprié + option de recadrage. On peut utiliser `unoptimized` ponctuellement si les médias distants ne fonctionnent pas via l'optimiseur, mais vérifier le chargement réel. L'UI ne doit jamais reposer sur un faux fallback statique coloré.
+
+Arborescence proposée :
 
 ```text
 app/
@@ -535,111 +491,116 @@ app/
   layout.tsx
   page.tsx
 components/
-  ui/
-    button.tsx
-    container.tsx
-    section-label.tsx
-    image-placeholder.tsx
   announcement-bar.tsx
   site-header.tsx
   hero-section.tsx
   manifesto-section.tsx
   lookbook-grid.tsx
+  product-editorial-card.tsx
   products-section.tsx
   construction-details.tsx
   early-access-form.tsx
   site-footer.tsx
+  editorial-image.tsx
 content/
   content.yaml
 lib/
   content.ts
+public/
+  images/               # Facultatif si photos réellement téléchargées
 DESIGN.md
 README.md
 ```
 
-### Comportement attendu de v0
-
-1. Lire intégralement **ce DESIGN.md** avant de commencer.
-2. Créer `content/content.yaml` depuis le contrat éditorial ci-dessus.
-3. Charger YAML côté serveur au build ou au rendu serveur, sans serveur métier ; une petite dépendance comme `yaml` est acceptable.
-4. Réaliser immédiatement les 9 sections et tous les composants nécessaires.
-5. Réutiliser les variables CSS, **pas de palette alternative** ni de composants non harmonisés.
-6. Employer des placeholders honnêtes si aucune photographie n'est attachée.
-7. Implémenter les vraies ancres et les interactions du MVP.
-8. Préférer du CSS/Tailwind simple : pas de librairie d'animation ni de gestion d'état disproportionnée.
-9. Vérifier compilation (`npm run build`) et rendu responsive avant publication.
-10. Préparer un site **déployable immédiatement** sur Vercel, sans clef API ni configuration supplémentaire.
+**MVP sans suringénierie :** pas de DB, pas de CMS, pas de compte, pas d'API métier, pas de paiement, pas de newsletter active, pas de variable d'environnement nécessaire. Le déploiement Vercel doit être direct.
 
 ---
 
-## 12. ACCESSIBILITÉ, PERFORMANCE ET SEO
+## 10. RESPONSIVE ET INTERACTIONS
 
-### Accessibilité
+### À 375px
 
-- Langue `<html lang="fr">`.
-- Un `h1`, puis titres hiérarchiques.
-- Contraste texte normal ≥4.5:1, gros texte ≥3:1, éléments d'interface discernables.
-- Focus clavier visible ; états non communiqués par la seule couleur.
-- `alt` utile pour images informatives ; `alt=""` pour décorations pures ; les placeholders sont explicitement identifiés dans l'interface.
-- Menu mobile avec `aria-expanded`, zone contrôlée et fermeture possible.
-- Formulaire avec label explicite, `type=email`, `required`, message d'état annoncé.
-- Prise en compte des préférences de réduction du mouvement.
+- Hero avec **photo visible** et non réduite à un bandeau microscopique.
+- `OUTSIDE SYSTEM` lisible sur 1–2 lignes, sans débordement horizontal.
+- CTA primaire et secondaire accessibles, empilés si nécessaire.
+- Produits en **une colonne**, belles grandes photos 4:5.
+- Lookbook en pile de 3 vraies photos, jamais un défilement horizontal cachant des médias.
+- Menu mobile réellement ouvrable/fermable.
 
-### Performance
+### À 768px
 
-- Images statiques et poids limité, dimensions explicites ; `next/image` si images réelles fournies.
-- Pas de vidéos de fond automatiques.
-- Pas d'animations lourdes ni dépendances inutiles.
-- Polices chargées avec `next/font`, poids et sous-ensembles minimaux.
-- Éviter JavaScript sur les sections purement éditoriales.
+- Produits en **deux colonnes** ; textes, photos et titres sans collision.
+- Hero photo et texte peuvent être disposés en split uniquement si l'image garde du poids visuel.
+- Lookbook en grille adaptée, sans recadrage destructeur.
 
-### Métadonnées
+### À 1440px
 
-- `title`: `HORS CHAMP — Drop 01 / Outside System`.
-- `description`: `Des vêtements essentiels, construits pour vivre dehors. Découvrez Drop 01 — Outside System, une collection de démonstration HORS CHAMP.`
-- Pas de faux `Product` schema.org avec prix/disponibilités, ni de données structurées commerciales inventées.
+- Hero éditorial fort, image **dominante** et typographie monumentale sans empiéter sur le vêtement.
+- Produits en **deux colonnes larges** par défaut : plus premium que quatre miniatures serrées ; possibilité de quatre colonnes si photos suffisamment grandes et lisibles.
+- Lookbook asymétrique et respirant.
 
----
+### Interactions
 
-## 13. CHECKLIST D'ACCEPTATION DU MVP
-
-### Direction artistique
-
-- [ ] Le site ressemble à une **marque streetwear éditoriale**, pas à un SaaS ou un Shopify générique.
-- [ ] `Chalk`, `Carbon` et `Signal` dominent de façon **mesurée** ; rust reste ponctuel.
-- [ ] Typographies Space Grotesk + IBM Plex Mono, sans polices supplémentaires arbitraires.
-- [ ] La hiérarchie, les marges et les détails techniques sont cohérents entre sections.
-- [ ] Le hero « OUTSIDE SYSTEM » est spectaculaire **et** lisible sur mobile.
-
-### Fidélité au brief
-
-- [ ] 9 sections présentes dans l'ordre demandé.
-- [ ] Promesse, manifeste, 4 produits et deux CTA reprennent les textes validés.
-- [ ] `content/content.yaml` est la source de vérité éditoriale.
-- [ ] Aucun faux stock, prix, avis, date, disponibilité, urgence ou rareté.
-- [ ] Images de démonstration clairement identifiées.
-- [ ] Formulaire sans backend avec message **transparent** après soumission.
-
-### Exécution
-
-- [ ] Les ancres `#collection`, `#manifesto`, `#lookbook`, `#details`, `#access` fonctionnent.
-- [ ] Menu mobile, focus, formulaire et CTA sont accessibles et interactifs.
-- [ ] Vérifications à 375px, 768px et 1440px, sans débordement horizontal.
-- [ ] Aucune variable d'environnement requise.
-- [ ] `npm run build` passe et l'application est déployable sur **Vercel**.
+- Focus visible, navigation clavier, `prefers-reduced-motion`, contrastes WCAG AA.
+- Hover sur les images : zoom max 1.02–1.04 (léger), **sans** recouvrir le produit d'une carte UI.
+- CTA Signal sur Carbon ou Chalk, hauteur min 44px.
+- Pas de sliders ou vidéos obligatoires, ni de parallax coûteux.
+- `loading="eager"` / `priority` pour le hero, lazy loading des autres visuels.
 
 ---
 
-## 14. PROMPT COURT D'ACCOMPAGNEMENT À COLLER DANS v0
+## 11. TESTS ET CONDITIONS DE LIVRAISON
 
-> Crée immédiatement la landing page Next.js de **HORS CHAMP — Drop 01 / Outside System**. Le fichier joint `DESIGN.md` constitue la **source de vérité visuelle et d'interaction** : respecte intégralement ses tokens CSS, sa direction **Safety Signal**, ses composants, ses grilles, son accessibilité et ses règles responsive. Crée `content/content.yaml` à partir du contrat éditorial du fichier et utilise ce YAML comme **source de vérité de contenu**. Génère les 9 sections dans l'ordre imposé, avec les deux CTA fonctionnels. N'invente ni photographie officielle, ni prix, ni stock, ni date, ni avis, ni rareté. Le formulaire d'accès anticipé reste une démo sans backend et affiche explicitement qu'aucune adresse n'est enregistrée. Priorise un rendu streetwear éditorial premium, sobre, avec un vert signal précis et ponctuel. Utilise Next.js App Router + TypeScript + Tailwind, sans services externes, et rends le projet compilable avec `npm run build`, prêt à déployer sur Vercel. **Génère le code et l'interface maintenant, pas un plan.**
+**Ne considère pas le site « terminé » sans contrôler ces points.**
+
+### Audit photos — bloquant
+
+- [ ] Hero : **1 photo réellement affichée** avec une tenue visible, pas juste du texte.
+- [ ] Lookbook : **3 photographies réellement affichées** (silhouette / matière / urbain).
+- [ ] Field Hoodie : photo d'un hoodie identifiable.
+- [ ] Layer Shell : photo d'une veste identifiable.
+- [ ] Archive Tee : photo d'un t-shirt identifiable.
+- [ ] Signal Cap : photo d'une casquette identifiable.
+- [ ] Aucune URL cassée ni image 404/403 visible.
+- [ ] Aucune référence à `placeholder.svg`, `ImagePlaceholder`, ou carte avec aplat de couleur à la place d'un vêtement.
+- [ ] Les photos ne sont pas présentées comme produits authentiques HORS CHAMP ; mentions de démonstration présentes.
+
+### Audit brief — bloquant
+
+- [ ] Les **9 sections du PDF** sont présentes, dans l'ordre.
+- [ ] Textes, CTA, manifeste, 4 produits conformes au YAML.
+- [ ] CTA `Accéder au drop` → `#access` ; `Découvrir la collection` → `#collection`.
+- [ ] Pas de faux prix, faux stock, fausse date, faux avis, fausse urgence, fausse rareté.
+- [ ] Formulaire d'inscription **purement visuel** : aucun email sauvegardé ; retour de démonstration explicite.
+- [ ] Contenu et images modifiables par YAML, sans devoir modifier JSX.
+
+### Audit technique — bloquant
+
+- [ ] Aucun scroll horizontal à **375px**, **768px**, **1440px**.
+- [ ] Les images ont des proportions maîtrisées et ne cachent pas les pièces.
+- [ ] Le menu mobile et les liens fonctionnent.
+- [ ] `npm run build` passe sans erreur.
+- [ ] Le site est compatible Vercel **sans** variable d'environnement ou serveur métier.
+- [ ] Preview et version déployée affichent les mêmes visuels.
 
 ---
 
-## 15. TRAÇABILITÉ DES DÉCISIONS
+## 12. PROMPT D'EXÉCUTION À COLLER DANS LE CHAT v0 AVEC CE FICHIER
 
-**Repris de l'exercice PDF (pages 1 à 7) :** identité HORS CHAMP, territoire de marque, tensions créatives, référence `Quiet utility × worn precision`, **6 couleurs et hex**, principes de typographie, direction photographique, promesse, noms/descriptions des 4 produits, structure de la landing page, deux CTA, YAML, contraintes anti-fausse-rareté et formulaire visuel sans backend.
+> **Corrige le site HORS CHAMP existant en suivant intégralement le `DESIGN_HORS_CHAMP_V2.md` joint.** Le défaut majeur du rendu actuel est l'**absence de photographies de vêtements**. Ne modifie pas seulement les couleurs : remplace les placeholders par de vraies photos de mode et assure-toi qu'elles sont chargées dans la preview.
+>
+> Affiche impérativement **une grande silhouette habillée dans le hero, trois photos lookbook et quatre photos produit**, exactement une pour Field Hoodie, Layer Shell, Archive Tee et Signal Cap. Utilise les URL de visuels de démonstration et leurs sources listées dans la section 2, idéalement téléchargées dans `public/images` ; si tu utilises les URLs distantes, configure `next/image` et vérifie le chargement. Si une image ne fonctionne pas ou ne montre pas le bon type de vêtement, remplace-la, ne laisse jamais un bloc vide.
+>
+> Conserve l'identité **Safety Signal** (Chalk `#E8E7E2`, Carbon `#151515`, Signal `#D6FF3F`, Space Grotesk + IBM Plex Mono), le positionnement parisien/technique, les 9 sections du PDF et l'esthétique éditoriale premium. Crée ou corrige `content/content.yaml` avec les photos et les textes comme source de vérité. Ne présente aucune photo de stock comme une image officielle HORS CHAMP ; affiche discrètement « Visuels d'inspiration — les produits HORS CHAMP présentés sont fictifs. » Respecte toutes les interdictions : aucun prix, stock, faux avis, fausse urgence, paiement ni backend. Le formulaire est une démo honnête.
+>
+> Génère immédiatement le **code exécutable et la page corrigée**, pas un compte rendu. Contrôle les images à 375 / 768 / 1440px, vérifie `npm run build`, puis rends le projet déployable sur Vercel. **Le site n'est pas fini tant que tous les vêtements sont clairement visibles.**
 
-**Proposé pour cette direction 05 Safety Signal (non prescrit mot pour mot par le PDF) :** association Space Grotesk / IBM Plex Mono, règles quantitatives de proportion du signal, tokens complémentaires d'accessibilité, échelles détaillées de tailles/espacements, noms de composants, interactions et seuils responsive.
+---
 
-**Adaptation demandée pour ton workflow :** génération dans **v0** et déploiement sur **Vercel** (le PDF évoque Google AI Studio et Netlify). Le changement de plateforme **ne modifie pas** les contraintes produit/éditoriales de l'exercice.
+## 13. TRAÇABILITÉ
+
+**Source :** PDF « Atelier TAs — Product Building End to End — Application Deployment D4 », 8 pages, transmis dans la conversation. Du PDF viennent : identité HORS CHAMP, manifeste, promesse, références comme tensions (non copies), palettes, principes d'image, 4 produits, structure en 9 zones, YAML, exclusion des faux arguments commerciaux et du backend.
+
+**Correction demandée par l'utilisateur :** faire apparaître **de véritables images de vêtements sur le site** et aligner le rendu sur les consignes photographiques du PDF. Les URL de photos, leurs auteurs, le manifeste `media` du YAML et le protocole de vérification sont de nouvelles décisions d'exécution ; **pas** des éléments du PDF.
+
+**Adaptation du workflow :** v0 / Vercel remplace Google AI Studio / Netlify mentionnés dans le document d'atelier.
