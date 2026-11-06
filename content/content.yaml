@@ -1,0 +1,83 @@
+brand:
+  name: HORS CHAMP
+  tagline: Des vêtements essentiels, construits pour vivre dehors.
+  territory: [sobriété parisienne, volume contemporain, imperfection assumée, protection technique, nostalgie sportswear]
+drop:
+  name: Drop 01 — Outside System
+  status: Collection de démonstration
+  launch_date: Date à confirmer
+  primary_cta: {label: Accéder au drop, href: '#access'}
+  secondary_cta: {label: Découvrir la collection, href: '#collection'}
+hero:
+  eyebrow: DROP 01
+  title: [OUTSIDE, SYSTEM]
+  annotation: ÉTUDE 001 — HORS CADRE
+  bottom_left: PARIS, FRANCE / INTENTIONS DE DESIGN
+  bottom_right: QUIET UTILITY × WORN PRECISION
+manifesto:
+  title: Pas une saison. Un système.
+  text: Des pièces simples, pensées pour les déplacements, les couches et les usages quotidiens.
+products:
+  - name: Field Hoodie
+    description: Hoodie oversize en coton lourd, lavé et structuré.
+    status: Produit de démonstration
+    code: HC—01
+    study: VOLUME
+  - name: Layer Shell
+    description: Une couche légère pensée pour protéger sans alourdir.
+    status: Produit de démonstration
+    code: HC—02
+    study: PROTECTION
+  - name: Archive Tee
+    description: Un t-shirt ample, marqué par un imprimé discret.
+    status: Produit de démonstration
+    code: HC—03
+    study: ESSENTIAL
+  - name: Signal Cap
+    description: Une casquette souple avec un détail réfléchissant.
+    status: Produit de démonstration
+    code: HC—04
+    study: SIGNAL
+lookbook:
+  title: Hors du cadre.
+  note: Trois études. Un même terrain.
+  captions: [01 / FORM, 02 / DETAIL, 03 / MOVEMENT]
+  alt: Étude abstraite de plis textiles sombres, créée pour la direction artistique ; ne représente pas un produit réel.
+  demo_label: Visuel de démonstration
+  image_note: ÉTUDE VISUELLE GÉNÉRÉE / NON CONTRACTUELLE
+collection:
+  title: Quatre pièces. Un système.
+  label: DROP 01 / 04 PIÈCES
+  visual_label: ÉTUDE GRAPHIQUE
+construction:
+  title: La forme suit l’usage.
+  note: Intentions de construction, pas spécifications techniques.
+  items:
+    - {label: VOLUME, title: Laisser de l’espace., text: Des volumes contemporains et une silhouette ample.}
+    - {label: LAYERING, title: Penser en couches., text: Superposer, adapter, recontextualiser.}
+    - {label: PROTECTION, title: Habiter le dehors., text: La protection technique comme intention de design.}
+    - {label: EVERYDAY USE, title: Accepter les traces., text: Des usages quotidiens et des imperfections assumées.}
+access:
+  title: Le drop arrive bientôt.
+  text: Inscris-toi pour recevoir l'accès anticipé et les informations de lancement.
+  input_label: Ton adresse email
+  button_label: Rejoindre la liste
+  confirmation_message: Merci. Tu recevras les prochaines informations du drop.
+  backend_required: false
+  demo_notice: Mode démonstration — aucune adresse email n'a été enregistrée.
+  before_notice: Formulaire de démonstration. Aucune donnée collectée.
+footer:
+  links: [Collection, Manifeste, Contact, Instagram]
+  legal: [Mentions légales, Politique de confidentialité]
+  incomplete: À compléter
+  note: MARQUE FICTIVE / PROJET DE DÉMONSTRATION
+ui:
+  nav: [{label: Collection, href: '#collection'}, {label: Manifeste, href: '#manifesto'}, {label: Accès anticipé, href: '#access'}]
+  menu: Menu
+  close: Fermer
+  home: Retour en haut
+  skip: Aller au contenu
+  labels: [01 / MANIFESTE, 02 / LOOKBOOK, 03 / COLLECTION, 04 / CONSTRUCTION NOTES, 05 / ACCÈS ANTICIPÉ]
+seo:
+  title: HORS CHAMP — Drop 01 / Outside System
+  description: Des vêtements essentiels, construits pour vivre dehors. Découvrez Drop 01 — Outside System, une collection de démonstration HORS CHAMP.
